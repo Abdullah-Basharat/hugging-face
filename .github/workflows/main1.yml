@@ -1,9 +1,10 @@
 name: Sync to Hugging Face hub
+
 on:
   push:
     branches: [main]
 
-  # to run this workflow manually from the Actions tab
+  # To run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -13,11 +14,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Add remote 
+      - name: Push to Hugging Face hub
         env:
-          HuggingFace: ${{ secrets.HUGGINGFACE }}
-        run: git remote add space https://$HuggingFace@huggingface.co/spaces/AbdullahBasharat/demo1
-      - name: Push to hub
-        env:
-          HuggingFace: ${{ secrets.HuggingFace }}
-        run: git push --force https://$HuggingFace@huggingface.co/spaces/AbdullahBasharat/demo1 main
+          HUGGINGFACE: ${{ secrets.HUGGINGFACE }}
+        run: |
+          git remote set-url origin https://$HUGGINGFACE@huggingface.co/spaces/AbdullahBasharat/demo1
+          git push --force origin main
