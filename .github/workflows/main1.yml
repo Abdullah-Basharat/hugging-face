@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
       - name: Push to Hugging Face hub
         env:
-          HUGGINGFACE: ${{ secrets.HUGGINGFACE }}
+          HUGGINGFACE: ${{ secrets.HUGGGINGFACE }}
         run: |
-          git remote set-url origin https://$HUGGINGFACE@huggingface.co/spaces/AbdullahBasharat/demo1
+          git remote set-url origin https://AbdullahBasharat:$HUGGINGFACE@huggingface.co/spaces/AbdullahBasharat/demo1
           git push --force origin main
